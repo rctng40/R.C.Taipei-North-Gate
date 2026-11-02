@@ -51,7 +51,9 @@ content:
     type: collection
     path: data/activities
     format: yaml-frontmatter
-    filename: "{primary}.md"
+    filename:
+      template: "{primary}.md"
+      field: create
     view:
       primary: title
     fields:
