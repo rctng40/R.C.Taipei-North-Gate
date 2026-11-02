@@ -171,8 +171,8 @@ if (site.hero_image) {
 
 } else {
   // 沒有封面照片時，恢復 CSS 原本的背景
-  hero.style.backgroundImage = '';
-}
+hero.style.backgroundImage =
+  'linear-gradient(120deg, #172f24, #355b40, #71836a)';
 
   } catch (error) {
     console.error('首頁設定讀取失敗：', error);
