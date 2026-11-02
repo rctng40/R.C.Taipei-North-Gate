@@ -154,9 +154,17 @@ async function loadSiteSettings() {
       document.getElementById('site-subtitle').textContent = site.subtitle;
     }
 
-// 有上傳封面照片時，自動切換背景
+// 每次讀取設定時，先恢復預設森林綠色漸層
 const hero = document.querySelector('.hero');
 
+hero.style.backgroundImage =
+  'linear-gradient(120deg, #172f24, #355b40, #71836a)';
+
+hero.style.backgroundSize = 'cover';
+hero.style.backgroundPosition = 'center';
+hero.style.backgroundRepeat = 'no-repeat';
+
+// 有封面照片時，再切換成照片背景
 if (site.hero_image) {
   const imagePath = site.hero_image.startsWith('/')
     ? '/R.C.Taipei-North-Gate' + site.hero_image
@@ -164,16 +172,8 @@ if (site.hero_image) {
 
   hero.style.backgroundImage =
     `linear-gradient(rgba(15, 35, 24, 0.35), rgba(15, 35, 24, 0.35)), url("${imagePath}")`;
-
-  hero.style.backgroundSize = 'cover';
-  hero.style.backgroundPosition = 'center';
-  hero.style.backgroundRepeat = 'no-repeat';
-
-} else {
-  // 沒有封面照片時，恢復森林綠色漸層
-  hero.style.backgroundImage =
-    'linear-gradient(120deg, #172f24, #355b40, #71836a)';
 }
+
   } catch (error) {
     console.error('首頁設定讀取失敗：', error);
   }
