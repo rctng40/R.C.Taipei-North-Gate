@@ -57,6 +57,12 @@ h2{font-size:34px;font-weight:500;letter-spacing:5px;color:#294532}
 .activity-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .activity-card{background:white}
 .activity-photo{height:240px;background:linear-gradient(135deg,#8b9d7b,#344f3a);display:flex;align-items:center;justify-content:center;color:#edf0e8;letter-spacing:4px}
+.activity-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .activity-info{padding:25px}
 .activity-info h3{font-weight:500;font-size:20px}
 .activity-info p{font-size:13px;line-height:2;color:#7c8579}
@@ -238,6 +244,99 @@ async function loadTrees() {
 }
 
 loadTrees();
+
+async function loadActivities() {
+  const activityList = document.getElementById('activity-list');
+  const apiUrl = 'https://api.github.com/repos/rctng40/R.C.Taipei-North-Gate/contents/data/activities';
+
+  try {
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      throw new Error('無法讀取活動資料');
+    }
+
+    const files = await response.json();
+    const markdownFiles = files.filter(file => file.name.endsWith('.md'));
+
+    if (markdownFiles.length === 0) {
+      activityList.textContent = '目前尚無活動紀錄。';
+      return;
+    }
+
+    activityList.replaceChildren();
+
+    for (const file of markdownFiles) {
+      const fileResponse = await fetch(file.download_url);
+      if (!fileResponse.ok) continue;
+
+      const markdown = await fileResponse.text();
+      const frontmatter = markdown.match(/^---\s*([\s\S]*?)\s*---/);
+
+      if (!frontmatter) continue;
+
+      const data = {};
+
+      frontmatter[1].split('\n').forEach(line => {
+        const match = line.match(/^([a-z_]+):\s*(.*)$/);
+        if (match) {
+          data[match[1]] = match[2].replace(/^["']|["']$/g, '').trim();
+        }
+      });
+
+      const card = document.createElement('article');
+      card.className = 'activity-card';
+
+      const photo = document.createElement('div');
+      photo.className = 'activity-photo';
+
+      if (data.image) {
+        const img = document.createElement('img');
+        const imagePath = data.image.startsWith('/')
+          ? '/R.C.Taipei-North-Gate' + data.image
+          : data.image;
+
+        img.src = imagePath;
+        img.alt = data.title || '活動照片';
+        photo.appendChild(img);
+      } else {
+        photo.textContent = 'OUR MOMENTS';
+      }
+
+      const info = document.createElement('div');
+      info.className = 'activity-info';
+
+      const title = document.createElement('h3');
+      title.textContent = data.title || '未命名活動';
+
+      const date = document.createElement('p');
+      if (data.date) {
+        date.textContent = data.date.slice(0, 10).replace(/-/g, '/');
+      }
+
+      const description = document.createElement('p');
+      description.textContent = data.description || '';
+
+      info.append(title);
+      if (data.date) info.append(date);
+      info.append(description);
+
+      card.append(photo, info);
+      activityList.appendChild(card);
+    }
+
+    if (!activityList.children.length) {
+      activityList.textContent = '目前沒有可顯示的活動資料。';
+    }
+
+  } catch (error) {
+    console.error('活動資料讀取失敗：', error);
+    activityList.textContent = '活動資料暫時無法載入，請稍後再試。';
+  }
+}
+
+loadActivities();
+
 </script>
 </body>
 </html>
