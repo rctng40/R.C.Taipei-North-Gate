@@ -26,7 +26,9 @@ content:
     type: collection
     path: data/trees
     format: yaml-frontmatter
-    filename: "{primary}.md"
+    filename: 
+      template: "{primary}.md"
+      field: create
     view:
       primary: name
     fields:
