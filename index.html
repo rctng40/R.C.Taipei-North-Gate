@@ -155,20 +155,24 @@ async function loadSiteSettings() {
     }
 
     // 有上傳封面照片時，自動切換背景
-    if (site.hero_image) {
-      const hero = document.querySelector('.hero');
+    const hero = document.querySelector('.hero');
 
-      const imagePath = site.hero_image.startsWith('/')
-        ? '/R.C.Taipei-North-Gate' + site.hero_image
-        : site.hero_image;
+if (site.hero_image) {
+  const imagePath = site.hero_image.startsWith('/')
+    ? '/R.C.Taipei-North-Gate' + site.hero_image
+    : site.hero_image;
 
-      hero.style.backgroundImage =
-        `linear-gradient(rgba(15, 35, 24, 0.35), rgba(15, 35, 24, 0.35)), url("${imagePath}")`;
+  hero.style.backgroundImage =
+    `linear-gradient(rgba(15, 35, 24, 0.35), rgba(15, 35, 24, 0.35)), url("${imagePath}")`;
 
-      hero.style.backgroundSize = 'cover';
-      hero.style.backgroundPosition = 'center';
-      hero.style.backgroundRepeat = 'no-repeat';
-    }
+  hero.style.backgroundSize = 'cover';
+  hero.style.backgroundPosition = 'center';
+  hero.style.backgroundRepeat = 'no-repeat';
+
+} else {
+  // 沒有封面照片時，恢復 CSS 原本的背景
+  hero.style.backgroundImage = '';
+}
 
   } catch (error) {
     console.error('首頁設定讀取失敗：', error);
