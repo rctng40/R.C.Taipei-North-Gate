@@ -154,8 +154,8 @@ async function loadSiteSettings() {
       document.getElementById('site-subtitle').textContent = site.subtitle;
     }
 
-    // 有上傳封面照片時，自動切換背景
-    const hero = document.querySelector('.hero');
+// 有上傳封面照片時，自動切換背景
+const hero = document.querySelector('.hero');
 
 if (site.hero_image) {
   const imagePath = site.hero_image.startsWith('/')
@@ -170,10 +170,10 @@ if (site.hero_image) {
   hero.style.backgroundRepeat = 'no-repeat';
 
 } else {
-  // 沒有封面照片時，恢復 CSS 原本的背景
-hero.style.backgroundImage =
-  'linear-gradient(120deg, #172f24, #355b40, #71836a)';
-
+  // 沒有封面照片時，恢復森林綠色漸層
+  hero.style.backgroundImage =
+    'linear-gradient(120deg, #172f24, #355b40, #71836a)';
+}
   } catch (error) {
     console.error('首頁設定讀取失敗：', error);
   }
