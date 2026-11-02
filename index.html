@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R.C. Taipei North Gate</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f7f6ef;color:#293d30;font-family:'Noto Serif TC',serif}
+.hero{
+min-height:680px;height:90vh;position:relative;
+display:flex;flex-direction:column;justify-content:center;
+align-items:center;text-align:center;color:white;
+background:linear-gradient(120deg,#172f24,#355b40,#71836a);
+overflow:hidden
+}
+.hero:before{
+content:"";position:absolute;inset:0;opacity:.18;
+background:radial-gradient(ellipse at 20% 30%,#dce8cf 0,transparent 35%),
+radial-gradient(ellipse at 80% 70%,#a5bd91 0,transparent 40%)
+}
+nav{position:absolute;top:0;left:0;width:100%;padding:30px 7%;
+display:flex;justify-content:flex-end;gap:35px;z-index:2}
+nav a{color:white;text-decoration:none;font-size:13px;letter-spacing:3px}
+.hero-content{position:relative;z-index:1;padding:30px}
+.eyebrow{font-size:11px;letter-spacing:5px;color:#d4dfc9}
+h1{font-size:clamp(38px,6vw,76px);font-weight:400;letter-spacing:2px;margin:28px 0}
+.hero-content p{letter-spacing:3px;font-size:15px;color:#e0e8dc}
+.hero-button{display:inline-block;margin-top:35px;padding:13px 35px;
+border:1px solid #e2e8dc;color:white;text-decoration:none;font-size:12px;letter-spacing:3px}
+.hero-button:hover{background:white;color:#294532}
+.section{max-width:1150px;margin:auto;padding:100px 35px}
+.intro{text-align:center;max-width:780px}
+.small-title{font-size:11px;letter-spacing:5px;color:#899b7f}
+h2{font-size:34px;font-weight:500;letter-spacing:5px;color:#294532}
+.intro p:last-child,.section-desc{font-size:14px;line-height:2.2;color:#7c8579}
+.heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:40px}
+.heading h2{margin-bottom:0}
+.tree-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.tree-card{background:white;box-shadow:0 5px 20px #263e3210}
+.tree-photo{height:230px;background:linear-gradient(145deg,#a7b79a,#536e50);display:flex;align-items:center;justify-content:center;color:#eaf0e5;font-size:14px;letter-spacing:4px}
+.tree-card:nth-child(2) .tree-photo{background:linear-gradient(145deg,#c2b99b,#71805c)}
+.tree-card:nth-child(3) .tree-photo{background:linear-gradient(145deg,#9eaa87,#3c6248)}
+.tree-info{padding:24px}
+.tree-info h3{font-size:21px;font-weight:500;margin:0 0 10px}
+.tree-info p{font-size:13px;color:#82877e;line-height:1.9}
+.activity-section{background:#eeeee4}
+.activity-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.activity-card{background:white}
+.activity-photo{height:240px;background:linear-gradient(135deg,#8b9d7b,#344f3a);display:flex;align-items:center;justify-content:center;color:#edf0e8;letter-spacing:4px}
+.activity-info{padding:25px}
+.activity-info h3{font-weight:500;font-size:20px}
+.activity-info p{font-size:13px;line-height:2;color:#7c8579}
+footer{background:#20382a;color:#dce4d8;padding:35px 7%;display:flex;justify-content:space-between;font-size:11px;letter-spacing:3px}
+@media(max-width:700px){
+.tree-grid{grid-template-columns:1fr}
+.activity-grid{grid-template-columns:1fr}
+.heading{display:block}
+nav{justify-content:center;gap:18px}
+.section{padding:70px 22px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero" id="home">
+<nav>
+<a href="#home">首頁</a>
+<a href="#trees">樹木典藏</a>
+<a href="#activities">活動紀錄</a>
+</nav>
+<div class="hero-content">
+<div class="eyebrow">ROOTED IN NATURE · GROWING TOGETHER</div>
+<h1>R.C. Taipei North Gate</h1>
+<p>在城市裡，收藏每一片綠意與相遇。</p>
+<a href="#trees" class="hero-button">探索自然</a>
+</div>
+</header>
+
+<section class="section intro">
+<div class="small-title">OUR GREEN CORNER</div>
+<h2>讓自然，成為日常的一部分。</h2>
+<p>透過樹木的觀察與活動的紀錄，保存每一段與自然相遇的故事。<br>在這裡，一起認識植物、分享生活，也讓綠意持續生長。</p>
+</section>
+
+<section class="section" id="trees">
+<div class="heading">
+<div><div class="small-title">TREE COLLECTION</div><h2>樹木典藏</h2></div>
+<p class="section-desc">認識樹木，探索自然的多樣面貌。</p>
+</div>
+<div class="tree-grid">
+<article class="tree-card">
+<div class="tree-photo">TREE · 01</div>
+<div class="tree-info"><h3>樹木名稱一</h3><p>在這裡介紹樹木的外觀、特色、生長環境與觀察紀錄。</p></div>
+</article>
+<article class="tree-card">
+<div class="tree-photo">TREE · 02</div>
+<div class="tree-info"><h3>樹木名稱二</h3><p>記錄不同樹種的葉片、樹皮、花果，以及季節變化。</p></div>
+</article>
+<article class="tree-card">
+<div class="tree-photo">TREE · 03</div>
+<div class="tree-info"><h3>樹木名稱三</h3><p>透過每一棵樹的故事，認識森林與環境之間的關係。</p></div>
+</article>
+</div>
+</section>
+
+<section class="activity-section" id="activities">
+<div class="section">
+<div class="heading">
+<div><div class="small-title">MEMORIES & MOMENTS</div><h2>活動紀錄</h2></div>
+<p class="section-desc">把每一次相聚，留成值得回看的風景。</p>
+</div>
+<div class="activity-grid">
+<article class="activity-card">
+<div class="activity-photo">OUR MOMENTS · 01</div>
+<div class="activity-info"><h3>活動紀錄範例一</h3><p>在這裡放上活動照片與文字回顧，分享活動過程及精彩時刻。</p></div>
+</article>
+<article class="activity-card">
+<div class="activity-photo">OUR MOMENTS · 02</div>
+<div class="activity-info"><h3>活動紀錄範例二</h3><p>記錄每一次相遇、參與和共同完成的美好回憶。</p></div>
+</article>
+</div>
+</div>
+</section>
+
+<footer>
+<span>R.C. Taipei North Gate</span>
+<span>GROW WITH NATURE</span>
+</footer>
+</body>
+</html>
