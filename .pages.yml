@@ -1,0 +1,68 @@
+media:
+  input: uploads
+  output: /uploads
+  categories: [image]
+  extensions: [jpg, jpeg, png, webp, gif]
+
+content:
+  - name: site
+    label: 首頁設定
+    type: file
+    path: data/site.json
+    format: json
+    fields:
+      - name: title
+        label: 網站標題
+        type: string
+      - name: subtitle
+        label: 網站副標題
+        type: text
+      - name: hero_image
+        label: 首頁背景照片
+        type: image
+
+  - name: trees
+    label: 樹木典藏
+    type: collection
+    path: data/trees
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      primary: name
+    fields:
+      - name: name
+        label: 樹木名稱
+        type: string
+        required: true
+      - name: latin_name
+        label: 樹木學名
+        type: string
+      - name: description
+        label: 樹木介紹
+        type: text
+      - name: image
+        label: 樹木照片
+        type: image
+
+  - name: activities
+    label: 活動紀錄
+    type: collection
+    path: data/activities
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      primary: title
+    fields:
+      - name: title
+        label: 活動名稱
+        type: string
+        required: true
+      - name: date
+        label: 活動日期
+        type: date
+      - name: description
+        label: 活動回顧
+        type: text
+      - name: image
+        label: 活動照片
+        type: image
